@@ -1,0 +1,60 @@
+#include <cstdlib> 
+#include <ctime> 
+#include <iostream>
+
+using namespace std;
+
+
+int main() 
+{ 
+    
+    int i,x,y,v;
+    
+    start:
+    cout<<"\t bakiye girisi yapiniz"<<endl;
+    cin>>y;
+    while(y>0){
+    
+    bakiye:
+    cout<<endl;
+    cout<<"\t iddaa oynanicak miktar"<<endl;
+    cin>>v;
+    if(v>y){
+    	cout<<"\t idda oynanicak miktar bakiyeden buyuk olamaz"<<endl;
+    	goto bakiye;
+	}
+    
+        bas:
+        srand((unsigned)time(0)); 
+	    i = (rand()%10)+1; 
+        
+    	cout<<endl<<"\t 1-9 arasi sayi giriniz"<<endl;
+	
+    cin>> x;
+    if(x<1 || x>9){
+    	cout<<"\t 1 ile 9 arasinda girsene birader ";
+    	goto bas;
+	}
+    
+	if(x==i)
+	{
+		cout<<"\t\t\t\t dogru tahmin"<<endl;
+		y+=v;
+		cout<<"\t\t\t\t kalan bakiye="<<y;
+		cout<<endl<<"\t\t\t\t dogru sayi="<<i;
+	 }
+
+	else
+	{cout<<"\t\t\t\t yanlis tahmin";
+	y-=v;
+	cout<<"\t\t\t\t kalan bakiye="<<y;
+    cout<<endl<<"\t\t\t\t dogru sayi="<<i;
+	}
+	 if(y<=0)
+	{cout<<"\t\t\t\t bakiyeniz bitti"<<endl;
+	goto start;
+	 } 
+	
+	}
+    
+}
